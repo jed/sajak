@@ -1,0 +1,21 @@
+{
+  "author": "Jed Schmidt <tr@nslator.jp> (http://jed.is)",
+  "name": "sajak",
+  "description": "Simple Authenticated JSON API Kit",
+  "version": "0.1.0",
+  "main": "sajak",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "*",
+    "request": "*",
+    "mocha": "*",
+    "should": "*"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "node ./test/test.js"
+  }
+}
