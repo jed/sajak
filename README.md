@@ -11,7 +11,7 @@ To spin up a theoretical todo list backend, with authenticated users and authori
 ```javascript
 var http = require("http")
   , sajak = require("sajak")
-  , api = http.createServer()
+  , server = http.createServer()
 
 function User(){ ... }
 User.prototype = {
