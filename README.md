@@ -38,9 +38,11 @@ How it works
 Sajak returns a simple http listener. Upon every request, it:
 
 - parses incoming query, body, and auth data into JavaScript objects,
+- instantiates a new model based on the request pathname and query,
 - resolves any model URLs in the request into actual model instances,
 - calls the user's `authenticate` method to authenticate the user,
 - calls the resource's `authorize` method to authorize the user action,
+- extends the resource with any incoming body data,
 - calls `fetch`/`save`/`destroy` on the resource as per the request method, and
 - serializes and returns the results to the client.
 
@@ -59,8 +61,8 @@ Serves the specified models. This method comes in a few flavors:
 
 - `api.serve(name, Ctor)` serves a model at the specified name.
 - `api.serve(Ctor)` serves a model at the default name, which is the lowercase, pluralized name of the constructor.
-- `api.serve([Ctor, Ctor])` serves multiple models using the default names
-- `api.serve({name: Ctor, name: Ctor})` serves multiple models using the specified names.
+- `api.serve([Ctor, Ctor, ...])` serves multiple models using the default names
+- `api.serve({name: Ctor, name: Ctor, ...})` serves multiple models using the specified names.
 
 To serve the root endpoint, use an empty string for the model name.
 
