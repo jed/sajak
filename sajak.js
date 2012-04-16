@@ -192,6 +192,10 @@ App.prototype.router = function(req, res, next) {
           return next(err)
         }
 
+        Object.keys(data).forEach(function(key) {
+          resource[key] = data[key]
+        })
+
         if (!resource[action]) {
           err = new Error("Method Not Allowed")
           err.status = 405
