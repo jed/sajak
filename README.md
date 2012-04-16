@@ -28,7 +28,7 @@ TodoItem.prototype = {
   destroy: function(cb){ ... }
 }
 
-server.on("request", sajak([User, TodoItem]))
+server.on("request", sajak([User, TodoItem]).router)
 server.listen(3000)
 ```
 
@@ -62,7 +62,7 @@ Serves the specified models. This method comes in a few flavors:
 - `api.serve([Ctor, Ctor])` serves multiple models using the default names
 - `api.serve({name: Ctor, name: Ctor})` serves multiple models using the specified names.
 
-To serve the root enpdpoint, use an empty string for the model name.
+To serve the root endpoint, use an empty string for the model name.
 
 ### api.router
 
