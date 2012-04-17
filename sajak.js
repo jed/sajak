@@ -5,7 +5,7 @@ var url = require("url")
 function App(models) {
   this.models = Object.create(null)
 
-  this.serve(models)
+  if (models) this.serve(models)
 
   this.router = this.router.bind(this)
 }
