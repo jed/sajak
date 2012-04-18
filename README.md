@@ -1,6 +1,8 @@
 Sajak - Simple Authenticated JSON API Kit
 =========================================
 
+[![Build Status](https://secure.travis-ci.org/jed/sajak.png)][travis]
+
 Sajak is a small tool for building JSON APIs. It turns a list of models into a node.js app that handles routing, authentication, and authorization by convention so that you can focus on your app instead of tedious RESTronautics.
 
 (I'm still exploring, so it's not for prime-time. Just putting it out there for now.)
@@ -80,3 +82,4 @@ Copyright (c) 2012 Jed Schmidt. See LICENSE.txt for details.
 Send any questions or comments [here][twitter].
 
 [twitter]: http://twitter.com/jedschmidt
+[travis]: http://travis-ci.org/jed/sajak
