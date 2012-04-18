@@ -6,7 +6,7 @@
   "main": "sajak",
   "dependencies": {},
   "devDependencies": {
-    "express": "*",
+    "connect": "*",
     "request": "*",
     "mocha": "*",
     "should": "*"
