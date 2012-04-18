@@ -1,2 +1,2 @@
 --bail
---reporter dot
+--reporter spec
