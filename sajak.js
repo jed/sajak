@@ -1,5 +1,4 @@
 var url = require("url")
-  , express = require("express")
   , debug = process.env.NODE_ENV != "production"
 
 function App(models) {
