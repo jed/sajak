@@ -63,7 +63,7 @@ describe("sajak", function() {
   })
 
   describe("authentication", function() {
-    it("should return 200 for valid password", function(done) {
+    it("should return 200 for valid user/password", function(done) {
       request("http://sajak:pass@localhost:8000/", function(err, res, body) {
         res.statusCode.should.eql(200)
         done()
