@@ -151,7 +151,7 @@ App.prototype.router = function(req, res, next) {
   if (!res.json) res.json = function(data) {
     try {
       data = new Buffer(JSON.stringify(data, null, App.indent))
-      res.setHeader("Content-Type", "application/json")
+      res.setHeader("Content-Type", "application/json; charset=utf-8")
       res.setHeader("Content-Length", data.length)
       res.end(data)
     }
