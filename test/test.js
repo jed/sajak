@@ -19,7 +19,7 @@ describe("sajak", function() {
 
     it("should have content-type 'application/json'", function(done) {
       request("http://sajak:pass@localhost:8000/", function(err, res, body) {
-        res.headers.should.have.property("content-type", "application/json; charset=utf-8")
+        res.should.be.json
         done()
       })
     })
