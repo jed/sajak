@@ -2,7 +2,7 @@
   "author": "Jed Schmidt <tr@nslator.jp> (http://jed.is)",
   "name": "sajak",
   "description": "Simple Authenticated JSON API Kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "sajak",
   "dependencies": {},
   "devDependencies": {
