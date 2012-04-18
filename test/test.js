@@ -106,7 +106,21 @@ describe("sajak", function() {
         done()
       })
     })
+  })
 
+  describe("response", function() {
+    it("should return a list of endpoints at / by default", function(done) {
+      request("http://sajak:pass@localhost:8000/", function(err, res, body) {
+        body = JSON.parse(body)
+
+        var data = body.map(function(x){ return x.type })
+        data.should.have.property("length", 2)
+
+        data.should.eql(Object.keys(api.models))
+
+        done()
+      })
+    })
   })
 
   after(function(done) {
