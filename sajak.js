@@ -127,6 +127,7 @@ App.prototype.router = function(req, res, next) {
     , action
     , user
     , authorize
+    , app
 
   if (!next) next = function(err) {
     var data
@@ -168,6 +169,7 @@ App.prototype.router = function(req, res, next) {
 
   res.setHeader("Allow", allows.join(", "))
 
+  app       = this
   auth      = App.parseAuth(req)
   action    = App.actions[req.method]
   user      = new this.User({})
@@ -178,6 +180,13 @@ App.prototype.router = function(req, res, next) {
       err.status = 400
       return next(err)
     }
+
+    Object.keys(data).forEach(function(key) {
+      if (key.slice(-5) != ".href") return
+
+      data[key.slice(0, -5)] = app.resolve(data[key])
+      delete data[key]
+    })
 
     user.authenticate(auth, function(err) {
       if (err) {
@@ -202,7 +211,9 @@ App.prototype.router = function(req, res, next) {
         }
 
         resource[action](function(err, data) {
-          err ? next(err) : res.json(data)
+          if (err) return next(err)
+
+          res.json(data)
         })
       })
     })

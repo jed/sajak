@@ -4,14 +4,6 @@ function User(attrs) {
   this.id = attrs.id
 }
 
-User.prototype.authorize = function(user, method, next) {
-  if (this.id != user.id) {
-    return next(new Error("Users cannot access other user profiles."))
-  }
-
-  next()
-}
-
 User.prototype.authenticate = function(auth, next) {
   if (!auth.scheme) {
     return next(new Error("Authentication required."))
@@ -34,10 +26,46 @@ User.prototype.fetch = function(cb) {
   cb(null, this)
 }
 
-function Note() {}
+notes = [
+  {id: 0, user: "sajak", text: "Hello world."},
+  {id: 1, user: "sajak", text: "Hello again."},
+  {id: 2, user: "sajxck_", text: "Hello world."}
+]
 
-Note.prototype.fetch = function(cb) {
-  cb(null, this)
+function Note(attrs) {
+  this.id = attrs.id
+}
+
+Note.prototype = {
+  authorize: function(user, method, next) {
+    this.fetch(function(err, note) {
+      if (note && note.user != user.id) {
+        return next(new Error)
+      }
+
+      next()
+    })
+  },
+
+  save: function(cb) {
+    if (!(this.user instanceof User)) {
+      cb(new Error("User required."))
+    }
+
+    if ("id" in this) notes[this.id] = this
+
+    else this.id = notes.push(this)
+
+    cb(null, this)
+  },
+
+  fetch: function(cb) {
+    if (!(this.id in notes)) {
+      return cb(new Error)
+    }
+
+    cb(null, notes[this.id])
+  }
 }
 
 module.exports = sajak([User, Note])
